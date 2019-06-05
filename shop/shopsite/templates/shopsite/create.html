@@ -1,0 +1,10 @@
+{% extends "shopsite/layout/basic.html" %}
+{% block title %}Добавить товар - Your Look{% endblock %}
+{% block content %}
+	<h2>Добавление товара</h2>
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Добавить">
+	</form>
+{% endblock %}

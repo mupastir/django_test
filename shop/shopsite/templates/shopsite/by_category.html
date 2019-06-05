@@ -1,0 +1,21 @@
+{% extends "shopsite/layout/basic.html" %}
+{% block title %}{{ current_category.category }} - Your Look{% endblock %}
+{% block content %}
+	<h2>Рубрика: {{ current_category.category }} </h2 >
+	{% for gd in gds %}
+	<div class="card" style="width: 18rem;">
+    <img src="{{ gd.image_1.url }}" class="card-img-top" alt="...">
+ 		<div class="card-body">
+    		<h5 class="card-title">{{ gd.name }}</h5>
+    		<p class="card-text">{{ gd.brand }}</p>
+		</div>
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item">Цена: {{ gd.price }} Грн</li>
+		</ul>
+		<div class="card-body">
+			<a href="#" class="card-link">Детальнее</a>
+			<a href="#" class="card-link">Купить</a>
+		</div>
+	</div>
+	{% endfor %}
+{% endblock %}

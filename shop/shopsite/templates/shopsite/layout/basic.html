@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type"
+	content="text/html" charset="utf-8">
+	<title>{% block title %}Главная{% endblock %} - 
+	Your Look</title>
+</head>
+<body>
+	<header>
+		<h1>Your Look</h1>
+	</header>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <a class="navbar-brand" href="{% url 'index' %}">Главная</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+	    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+	      {% for category in categories %}
+	      <li class="nav-item" id="{{ category.pk }}">
+	        <a class="nav-link" href="{% url 'by_category' category.pk %}">
+	        	{{ category.category }}<span class="sr-only">(current)</span></a>
+	      </li>
+	      {% endfor %}
+	      <li class="nav-item">
+	        <a class="nav-link" href="{% url 'add' %}">
+	        	Добавить<span class="sr-only">(current)</span></a>
+	      </li>
+	    </ul>
+	    <form class="form-inline my-2 my-lg-0">
+	      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	    </form>
+	  </div>
+	</nav>
+	<section>
+		{% block content %}
+		{% endblock %}
+	</section>
+</body>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
